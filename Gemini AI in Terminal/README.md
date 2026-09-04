@@ -1,0 +1,1 @@
+This program uses the google-genai module to summon the Gemini AI chatbot directly on your terminal. To use it, you have to get an API key from the Google AI Studio website. I also recommend to import the dotenv module and create a .env file for your key (e.g. `GEMINI_API_KEY=you_api_key_broski`)
