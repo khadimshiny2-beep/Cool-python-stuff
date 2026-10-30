@@ -1,19 +1,18 @@
 import yt_dlp
 # Remember to install videos about Python librairies
 
+
 def download_yt_video(url):
     ydl_opts = {
-        "format": "bestvideo[height<=1080]+bestaudio/best[height<=1080]",
+        "format": "bv*[height<=1080]+ba/b[height<=1080]",
         "noplaylist": True,
         "merge_output_format": "mp4",
-        "postprocessors": [
-            {
-                "key": "FFmpegVideoConvertor",
-                "preferedformat": "mp4",
-            }
-        ],
+        "retries": 20,
+        "fragment_retries": 20,
+        "cookiesfrombrowser": ("firefox",),
+        "js_runtimes": {"deno": {}},  # or {"node": {}}
+        "remote_components": ["ejs:github"],  # keep only if yt-dlp-ejs isn't installed
     }
-
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
 
